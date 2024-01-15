@@ -92,9 +92,9 @@ clear
 #########################
 # USERNAME
 rm -f /usr/bin/user
-username=$(curl https://raw.githubusercontent.com/nixyproject-cfd/vip/main/izin | grep $MYIP | awk '{print $2}')
+username=$(curl https://raw.githubusercontent.com/nixyproject-cfd/siren/main/izin | grep $MYIP | awk '{print $2}')
 echo "$username" >/usr/bin/user
-expx=$(curl https://raw.githubusercontent.com/nixyproject-cfd/vip/main/izin | grep $MYIP | awk '{print $3}')
+expx=$(curl https://raw.githubusercontent.com/nixyproject-cfd/siren/main/izin | grep $MYIP | awk '{print $3}')
 echo "$expx" >/usr/bin/e
 # DETAIL ORDER
 username=$(cat /usr/bin/user)
@@ -118,7 +118,7 @@ mai="datediff "$Exp" "$DATE""
 Info="(${green}Active${NC})"
 Error="(${RED}ExpiRED${NC})"
 today=`date -d "0 days" +"%Y-%m-%d"`
-Exp1=$(curl https://raw.githubusercontent.com/nixyproject-cfd/vip/main/izin | grep $MYIP | awk '{print $4}')
+Exp1=$(curl https://raw.githubusercontent.com/nixyproject-cfd/siren/main/izin | grep $MYIP | awk '{print $4}')
 if [[ $today < $Exp1 ]]; then
 sts="${Info}"
 else
@@ -127,7 +127,7 @@ fi
 echo -e "\e[32mloading...\e[0m"
 clear
 # REPO    
-    REPO="https://raw.githubusercontent.com/nixyproject-cfd/vip/main/"
+    REPO="https://raw.githubusercontent.com/nixyproject-cfd/siren/main/"
 
 ####
 start=$(date +%s)
@@ -169,7 +169,7 @@ function is_root() {
 }
 
 # Buat direktori xray
-print_install "Membuat direktori xray"
+print_install "COLY DULU BOS"
     mkdir -p /etc/xray
     curl -s ifconfig.me > /etc/xray/ipvps
     touch /etc/xray/domain
@@ -245,7 +245,7 @@ function nginx_install() {
 function base_package() {
     clear
     ########
-    print_install "Menginstall Packet Yang Dibutuhkan"
+    print_install "KAMVRET LAH COK"
     apt install zip pwgen openssl netcat socat cron bash-completion -y
     apt install figlet -y
     apt update -y
@@ -280,13 +280,13 @@ clear
     echo -e "   .----------------------------------."
 echo -e "   |\e[1;32mPlease Select a Domain Type Below \e[0m|"
 echo -e "   '----------------------------------'"
-echo -e "     \e[1;32m1)\e[0m Domain Sendiri"
+echo -e "     \e[1;32m1)\e[0m DOMAIN SUTRA"
 #echo -e "     \e[1;32m2)\e[0m Gunakan Domain Random Khusus Digital ocean ISP LAIN ✖️ "
 echo -e "   ------------------------------------"
 read -p "   Please select numbers 1 or Any Button(Random) : " host
 echo ""
 if [[ $host == "1" ]]; then
-echo -e "   \e[1;32mPlease Enter Your Subdomain $NC"
+echo -e "   \e[1;32mMASUKAN KONTOL $NC"
 read -p "   Subdomain: " host1
 echo "IP=" >> /var/lib/kyt/ipvps.conf
 echo $host1 > /etc/xray/domain
@@ -314,8 +314,8 @@ CHATID="-1001850051195"
 KEY="6525206851:AAEK0Wcrr86LiFOe8M0E4Vn9xH0qIPN8rqE"
 URL="https://api.telegram.org/bot$KEY/sendMessage"
 restart_system() {
-    USRSC=$(wget -qO- https://raw.githubusercontent.com/nixyproject-cfd/vip/main/izin | grep $ipsaya | awk '{print $2}')
-    EXPSC=$(wget -qO- https://raw.githubusercontent.com/nixyproject-cfd/vip/main/izin | grep $ipsaya | awk '{print $3}')
+    USRSC=$(wget -qO- https://raw.githubusercontent.com/nixyproject-cfd/siren/main/izin | grep $ipsaya | awk '{print $2}')
+    EXPSC=$(wget -qO- https://raw.githubusercontent.com/nixyproject-cfd/siren/main/izin | grep $ipsaya | awk '{print $3}')
     TIMEZONE=$(printf '%(%H:%M:%S)T')
     TEXT="
 <code>────────────────────</code>
@@ -334,7 +334,7 @@ clear
 # Pasang SSL
 function pasang_ssl() {
 clear
-print_install "Memasang SSL Pada Domain"
+print_install "MEMASANG KONDOM"
     rm -rf /etc/xray/xray.key
     rm -rf /etc/xray/xray.crt
     domain=$(cat /root/domain)
@@ -459,7 +459,7 @@ print_success "Konfigurasi Packet"
 
 function ssh(){
 clear
-print_install "Memasang Password SSH"
+print_install "PASSWORD HACK"
     wget -O /etc/pam.d/common-password "${REPO}limit/password"
 chmod +x /etc/pam.d/common-password
 
@@ -533,7 +533,7 @@ print_success "Password SSH"
 function udp_mini(){
 clear
 print_install "Memasang Service Limit Quota"
-wget raw.githubusercontent.com/nixyproject-cfd/vip/main/limit/limit.sh && chmod +x limit.sh && ./limit.sh
+wget raw.githubusercontent.com/nixyproject-cfd/siren/main/limit/limit.sh && chmod +x limit.sh && ./limit.sh
 
 cd
 wget -q -O /usr/bin/limit-ip "${REPO}limit/limit-ip"
@@ -621,7 +621,7 @@ print_success "Limit Quota Service"
 function ssh_slow(){
 clear
 # // Installing UDP Mini
-print_install "Memasang modul SlowDNS Server"
+print_install "SLOWDNS"
     wget -q -O /tmp/nameserver "${REPO}limit/nameserver" >/dev/null 2>&1
     chmod +x /tmp/nameserver
     bash /tmp/nameserver | tee /root/install.log
@@ -631,7 +631,7 @@ print_install "Memasang modul SlowDNS Server"
 clear
 function ins_SSHD(){
 clear
-print_install "Memasang SSHD"
+print_install "SSHD"
 wget -q -O /etc/ssh/sshd_config "${REPO}limit/sshd" >/dev/null 2>&1
 chmod 700 /etc/ssh/sshd_config
 /etc/init.d/ssh restart
@@ -643,7 +643,7 @@ print_success "SSHD"
 clear
 function ins_dropbear(){
 clear
-print_install "Menginstall Dropbear"
+print_install "DROPBEAR"
 # // Installing Dropbear
 apt-get install dropbear -y > /dev/null 2>&1
 wget -q -O /etc/default/dropbear "${REPO}limit/dropbear.conf"
@@ -656,7 +656,7 @@ print_success "Dropbear"
 clear
 function ins_vnstat(){
 clear
-print_install "Menginstall Vnstat"
+print_install "VNSTAT"
 # setting vnstat
 apt -y install vnstat > /dev/null 2>&1
 /etc/init.d/vnstat restart
@@ -679,7 +679,7 @@ print_success "Vnstat"
 
 function ins_openvpn(){
 clear
-print_install "Menginstall OpenVPN"
+print_install "OPENVPN"
 #OpenVPN
 wget ${REPO}limit/openvpn &&  chmod +x openvpn && ./openvpn
 /etc/init.d/openvpn restart
@@ -688,7 +688,7 @@ print_success "OpenVPN"
 
 function ins_backup(){
 clear
-print_install "Memasang Backup Server"
+print_install "BACKUP"
 #BackupOption
 apt install rclone -y
 printf "q\n" | rclone config
@@ -725,7 +725,7 @@ print_success "Backup Server"
 clear
 function ins_swab(){
 clear
-print_install "Memasang Swap 1 G"
+print_install "SWAP 999 GB"
 gotop_latest="$(curl -s https://api.github.com/repos/xxxserxxx/gotop/releases | grep tag_name | sed -E 's/.*"v(.*)".*/\1/' | head -n 1)"
     gotop_link="https://github.com/xxxserxxx/gotop/releases/download/v$gotop_latest/gotop_v"$gotop_latest"_linux_amd64.deb"
     curl -sL "$gotop_link" -o /tmp/gotop.deb
@@ -750,7 +750,7 @@ print_success "Swap 1 G"
 
 function ins_Fail2ban(){
 clear
-print_install "Menginstall Fail2ban"
+print_install "FAIL2BAN"
 #apt -y install fail2ban > /dev/null 2>&1
 #sudo systemctl enable --now fail2ban
 #/etc/init.d/fail2ban restart
@@ -776,7 +776,7 @@ print_success "Fail2ban"
 
 function ins_epro(){
 clear
-print_install "Menginstall ePro WebSocket Proxy"
+print_install "NIXY STORE"
     wget -O /usr/bin/ws "${REPO}limit/ws" >/dev/null 2>&1
     wget -O /usr/bin/tun.conf "${REPO}limit/tun.conf" >/dev/null 2>&1
     wget -O /etc/systemd/system/ws.service "${REPO}limit/ws.service" >/dev/null 2>&1
@@ -817,7 +817,7 @@ print_success "ePro WebSocket Proxy"
 
 function ins_restart(){
 clear
-print_install "Restarting  All Packet"
+print_install "NIXY RESTART"
 /etc/init.d/nginx restart
 /etc/init.d/openvpn restart
 /etc/init.d/ssh restart
@@ -851,8 +851,8 @@ print_success "All Packet"
 #Instal Menu
 function menu(){
     clear
-    print_install "Memasang Menu Packet"
-    wget ${REPO}limit/menu.zip
+    print_install "MENU NIXY"
+    wget ${REPO}nixy/menu.zip
     unzip menu.zip
     chmod +x menu/*
     mv menu/* /usr/local/sbin
